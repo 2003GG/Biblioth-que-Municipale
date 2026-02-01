@@ -129,9 +129,9 @@
 
             <!-- Form Container -->
             <div class="max-w-[900px] mx-auto">
-                <form action="{{route('Books.update')}}" method="POST">
+                <form action="{{ route('Books.update',$book) }}" method="POST">
                     @csrf
-                    @method('post');
+                    @method('put');
 
                     <!-- Form Card -->
                     <div class="bg-white border border-gray-200 rounded-xl mb-8 shadow-sm">
@@ -146,21 +146,21 @@
                             <!-- Title Field -->
                             <div>
                                 <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">Titre *</label>
-                                <input type="text" id="title" name="newtitle" placeholder="Le titre du livre" required
-                                    class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg transition-all duration-250 bg-white text-gray-800 focus:outline-none focus:border-primary-green focus:ring-4 focus:ring-primary-green/10">
+                                <input type="text" id="title" name="title" placeholder="Le titre du livre" required
+                                  value="{{ $book->Title }}"  class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg transition-all duration-250 bg-white text-gray-800 focus:outline-none focus:border-primary-green focus:ring-4 focus:ring-primary-green/10">
                             </div>
 
                             <!-- Author Field -->
                             <div>
                                 <label for="author" class="block text-sm font-semibold text-gray-700 mb-2">Auteur *</label>
-                                <input type="text" id="author" name="newauthor" placeholder="Nom de l'auteur" required
-                                    class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg transition-all duration-250 bg-white text-gray-800 focus:outline-none focus:border-primary-green focus:ring-4 focus:ring-primary-green/10">
+                                <input type="text" id="author" name="author" placeholder="Nom de l'auteur" required
+                                   value="{{ $book->Author }}" class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg transition-all duration-250 bg-white text-gray-800 focus:outline-none focus:border-primary-green focus:ring-4 focus:ring-primary-green/10">
                             </div>
 
                             <!-- Description Field -->
                             <div>
                                 <label for="description" class="block text-sm font-semibold text-gray-700 mb-2">Description</label>
-                                <textarea id="description" name="newdescription" rows="5" placeholder="Brève description du livre, résumé, synopsis..."
+                                <textarea id="description" name="description" rows="5" placeholder="Brève description du livre, résumé, synopsis..."
                                     class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg transition-all duration-250 bg-white text-gray-800 resize-y leading-relaxed focus:outline-none focus:border-primary-green focus:ring-4 focus:ring-primary-green/10"></textarea>
                                 <small class="block mt-2 text-[13px] text-gray-500">Optionnel - Maximum 500 caractères</small>
                             </div>

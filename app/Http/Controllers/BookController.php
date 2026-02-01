@@ -29,18 +29,27 @@ class BookController extends Controller
         return redirect(route('Books.index'));
     }
 
-    public function edit(Request $request)
+    public function edit(Book $book) {
+
+
+    return view('updateBook', ['book'=>$book]);
+}
+    public function update(Book $book,Request $request)
     {
+         $bookData = $request->validate([
+            'title' => 'required|string',
+            'author' => 'required|string',
+            'description' => 'required|string',
+        ]);
+        $book->update($bookData);
+        return redirect(route('Books.index'));
 
-        $selectedProduct = $request->has('id') ? Book::find($request->id) : null;
-        return view('updateBook');
-    }
-
-    public function update(Request $request, $id)
+}
+    public function destroy(Book $book)
     {
-        $Book = Book::findOrFail($id);
-        $Book->update($request->all());
-        return redirect()->route('Books.index');
-    }
+            $book->delete();
+            return redirect(route('Books.index'))->with('success','book delete successefuly');
 
+
+    }
 }

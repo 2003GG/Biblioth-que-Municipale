@@ -24,11 +24,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Book::factory(10)->create();
-        Book::factory()->create([
-            'title'=>'title',
-            'author'=>'Test User',
-            'description'=>''
-        ]);
+        // Book::factory(10)->create();
+        // Book::factory()->create([
+        //     'title'=>'title',
+        //     'author'=>'Test User',
+        //     'description'=>''
+        // ]);
     }
 }

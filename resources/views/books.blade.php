@@ -241,21 +241,27 @@
                                             <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
                                         </svg>
                                     </button>
-                                    <form action="{{route('Books.edit')}}" method="POST">
-                                          @csrf
-                                         @method('post')
-                                         <input type="hidden" value="{{ $book->id }}" name="id">
-                                    <button type="submit" class="w-8 h-8 rounded flex items-center justify-center bg-gray-50 text-amber-500 hover:bg-amber-500/15 hover:-translate-y-0.5 hover:shadow-md transition-all duration-150" title="Modifier">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+
+
+
+                                  <button  class="w-8 h-8 rounded flex items-center justify-center bg-gray-50 text-amber-500 hover:bg-amber-500/15 hover:-translate-y-0.5 hover:shadow-md transition-all duration-150" title="Modifier">
+                                    <a href="{{route('Books.edit',$book)}}">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                             <path d="M11.5 2L14 4.5L5 13.5H2.5V11L11.5 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
+                                        </a>
                                     </button>
-                                    </form>
-                                    <button class="w-8 h-8 rounded flex items-center justify-center bg-gray-50 text-red-500 hover:bg-red-500/15 hover:-translate-y-0.5 hover:shadow-md transition-all duration-150" title="Supprimer">
+
+                                     <form action="{{ route('Books.destroy',$book) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                    <button type="submit" class="w-8 h-8 rounded flex items-center justify-center bg-gray-50 text-red-500 hover:bg-red-500/15 hover:-translate-y-0.5 hover:shadow-md transition-all duration-150" title="Supprimer">
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                             <path d="M2 4H14M6 2H10M6 11V7M10 11V7M3 4L4 14H12L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                                         </svg>
                                     </button>
+                                    </form>
+
                                 </div>
                             </td>
                         </tr>
